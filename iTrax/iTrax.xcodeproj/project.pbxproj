@@ -287,6 +287,7 @@
 				6DA2C88B1E154828009997A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

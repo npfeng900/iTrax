@@ -8,38 +8,38 @@
 
 import UIKit
 
+struct GPXURL {
+    static let NotificationRadioStationName = "GPXURL Radio Station"
+    static let Key = "GPXURL URL Key"
+    static let defaultURL = NSURL(string: "http://web.stanford.edu/class/cs193p/Vacation.gpx")!
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    // AirDrop接受到文件（处理NSURL资源）时调用，true表示处理完毕
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        print("url = \(url)")
+        broadcastGPXURLNotification(url: url)
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
+    // applicationDidBecomeActive
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        broadcastGPXURLNotification(url: GPXURL.defaultURL)
     }
+    
+    // AppDelegate广播一个有NSURL信息的Notification
+    private func broadcastGPXURLNotification(url url: NSURL) {
+        let center = NSNotificationCenter.defaultCenter()
+        let notification = NSNotification(name: GPXURL.NotificationRadioStationName, object: self, userInfo: [GPXURL.Key : url ])
+        center.postNotification(notification)
+    }
+    
 
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
+    
 
 
 }
