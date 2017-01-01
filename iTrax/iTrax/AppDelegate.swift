@@ -9,9 +9,9 @@
 import UIKit
 
 struct GPXURL {
-    static let NotificationRadioStationName = "GPXURL Radio Station"
+    static let NotificationName = "GPXURL Radio Station"
     static let Key = "GPXURL URL Key"
-    static let defaultURL = NSURL(string: "http://web.stanford.edu/class/cs193p/Vacation.gpx")!
+    static let DefaultURL = NSURL(string: "http://web.stanford.edu/class/cs193p/Vacation.gpx")!
 }
 
 @UIApplicationMain
@@ -21,20 +21,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // AirDrop接受到文件（处理NSURL资源）时调用，true表示处理完毕
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        print("url = \(url)")
-        broadcastGPXURLNotification(url: url)
+        broadcastNotificationGPXURL(url)
         return true
     }
 
     // applicationDidBecomeActive
     func applicationDidBecomeActive(application: UIApplication) {
-        broadcastGPXURLNotification(url: GPXURL.defaultURL)
+
+        /*
+        let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+        dispatch_async(dispatch_get_global_queue(qos, 0)) {
+            NSThread.sleepForTimeInterval(3)
+            self.broadcastNotificationGPXURL(GPXURL.DefaultURL)
+        }
+        */
+        
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * NSEC_PER_SEC) )
+        let queue = dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)
+        dispatch_after(time, queue) {
+            self.broadcastNotificationGPXURL(GPXURL.DefaultURL)
+        }
     }
     
     // AppDelegate广播一个有NSURL信息的Notification
-    private func broadcastGPXURLNotification(url url: NSURL) {
+    private func broadcastNotificationGPXURL(url: NSURL) {
         let center = NSNotificationCenter.defaultCenter()
-        let notification = NSNotification(name: GPXURL.NotificationRadioStationName, object: self, userInfo: [GPXURL.Key : url ])
+        let notification = NSNotification(name: GPXURL.NotificationName, object: self, userInfo: [GPXURL.Key : url ])
         center.postNotification(notification)
     }
     
