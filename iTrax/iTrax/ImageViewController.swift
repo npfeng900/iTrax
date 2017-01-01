@@ -65,7 +65,8 @@ class ImageViewController: UIViewController, UIScrollViewDelegate, UIPopoverCont
             spinner?.stopAnimating()
         }
     }
-    /* scroll时显示contentOffset
+    /** scroll时显示contentOffset */
+    /*
     func scrollViewDidScroll(scrollView: UIScrollView) {
         print(scrollView.contentOffset)
     }*/
