@@ -167,10 +167,10 @@ class GPXViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentat
             if let waypoint = (sender as? MKAnnotationView)?.annotation as? EditableWaypoint {
                 if let ewvc = segue.destinationViewController.contentViewController as? EditWaypointViewController {
                     if let ppc = ewvc.popoverPresentationController {
-                        //ewvc
+                        //设置ewvc
                         let minimuSize = ewvc.view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
                         ewvc.preferredContentSize = CGSize(width: Constants.EditWaypointPopoverWidth, height: minimuSize.height)
-                        //ppc
+                        //设置ppc
                         let coordinatePoint = mapView.convertCoordinate(waypoint.coordinate, toPointToView: mapView)       //waypoint坐标
                         ppc.sourceRect = (sender as! MKAnnotationView).popoverSourceRectForCoordinatePoint(coordinatePoint)//pop的view大小
                         ppc.delegate = self
