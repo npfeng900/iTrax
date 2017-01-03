@@ -185,13 +185,14 @@ class GPXViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentat
     // MARK: - UIPopoverPresentationControllerDelegate
     /** UIModal的呈现样式 */
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        //默认是UIModalPresentationStyle.FullScreen
         return UIModalPresentationStyle.OverFullScreen
     }
     /** 增加容器视图控制器:UINavigationController */
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         // 容器视图控制器
         let navcon = UINavigationController(rootViewController: controller.presentedViewController)
-        // 模糊效果
+        // 添加模糊效果
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
         visualEffectView.frame = navcon.view.bounds
         navcon.view.insertSubview(visualEffectView, atIndex: 0)
