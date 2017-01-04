@@ -82,6 +82,7 @@ class GPXViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentat
             let coordinate = mapView.convertPoint(sender.locationInView(mapView), toCoordinateFromView: mapView)
             let waypoint = EditableWaypoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
             waypoint.name = "Dropped"
+            waypoint.links.append(GPX.Link(href: "http://date.212200.com/forum/201403/12/224525ntmiidtibsufqmkz.jpg"))
             mapView.addAnnotation(waypoint)
         }
     }

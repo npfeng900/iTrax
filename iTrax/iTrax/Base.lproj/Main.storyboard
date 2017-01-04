@@ -82,23 +82,40 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Agi-vU-1R7">
-                                <rect key="frame" x="81" y="66" width="499" height="30"/>
+                                <rect key="frame" x="81" y="66" width="453" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="240" verticalHuggingPriority="240" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" translatesAutoresizingMaskIntoConstraints="NO" id="ovx-30-EHE">
+                                <rect key="frame" x="20" y="104" width="560" height="476"/>
+                                <color key="backgroundColor" red="0.95315302830000004" green="1" blue="0.86849575059999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlD-Xe-RSu">
+                                <rect key="frame" x="542" y="58" width="30" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="📷"/>
+                                <connections>
+                                    <action selector="takePhoto" destination="PV2-Q4-fDP" eventType="touchUpInside" id="fyj-6X-F3K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="0BP-hD-sBR" secondAttribute="leading" id="3PO-Az-eZb"/>
                             <constraint firstItem="lWF-7D-Ypb" firstAttribute="leading" secondItem="0BP-hD-sBR" secondAttribute="trailing" constant="8" symbolic="YES" id="D47-7U-f4h"/>
+                            <constraint firstItem="nlD-Xe-RSu" firstAttribute="leading" secondItem="Agi-vU-1R7" secondAttribute="trailing" constant="8" symbolic="YES" id="E6d-3i-YPR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nlD-Xe-RSu" secondAttribute="trailing" constant="8" id="H3I-RN-uTC"/>
                             <constraint firstItem="Agi-vU-1R7" firstAttribute="top" secondItem="lWF-7D-Ypb" secondAttribute="bottom" constant="8" symbolic="YES" id="I8i-xc-TB1"/>
+                            <constraint firstItem="nlD-Xe-RSu" firstAttribute="centerY" secondItem="Agi-vU-1R7" secondAttribute="centerY" id="Kwg-Uw-Vg9"/>
                             <constraint firstItem="lWF-7D-Ypb" firstAttribute="top" secondItem="Txi-LK-iM5" secondAttribute="bottom" constant="8" symbolic="YES" id="MfM-JX-1Tx"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ovx-30-EHE" secondAttribute="leading" id="Rfl-Aa-5PG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lWF-7D-Ypb" secondAttribute="trailing" id="SpT-1p-BFp"/>
+                            <constraint firstItem="OuP-df-m2N" firstAttribute="top" secondItem="ovx-30-EHE" secondAttribute="bottom" constant="20" id="XyM-ta-Rf2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ovx-30-EHE" secondAttribute="trailing" id="cvV-9V-tcq"/>
                             <constraint firstItem="lWF-7D-Ypb" firstAttribute="leading" secondItem="Agi-vU-1R7" secondAttribute="leading" id="geT-lt-kBs"/>
                             <constraint firstItem="Agi-vU-1R7" firstAttribute="leading" secondItem="FJo-Vk-RJj" secondAttribute="trailing" constant="8" symbolic="YES" id="gfj-Cp-7J9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Agi-vU-1R7" secondAttribute="trailing" id="oG7-xR-9VL"/>
+                            <constraint firstItem="ovx-30-EHE" firstAttribute="top" secondItem="Agi-vU-1R7" secondAttribute="bottom" constant="8" symbolic="YES" id="h6n-pm-t2P"/>
                             <constraint firstItem="FJo-Vk-RJj" firstAttribute="baseline" secondItem="Agi-vU-1R7" secondAttribute="baseline" id="pYF-Mk-A3C"/>
                             <constraint firstItem="0BP-hD-sBR" firstAttribute="baseline" secondItem="lWF-7D-Ypb" secondAttribute="baseline" id="smw-DT-Kaz"/>
-                            <constraint firstItem="OuP-df-m2N" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Agi-vU-1R7" secondAttribute="bottom" constant="8" symbolic="YES" id="zwP-Ix-LBf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bf5-m5-Hhl">
@@ -109,6 +126,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageViewContainer" destination="ovx-30-EHE" id="hud-v8-tBr"/>
                         <outlet property="infoTextField" destination="Agi-vU-1R7" id="vm0-RX-ETn"/>
                         <outlet property="nameTextField" destination="lWF-7D-Ypb" id="z5Q-Ja-QmQ"/>
                     </connections>
@@ -135,6 +153,7 @@
                             </scrollView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-sZ-T8W">
                                 <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.1139041707" green="0.5696912408" blue="0.99943178889999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -177,7 +196,7 @@
         <!--Navigation Controller-->
         <scene sceneID="yAQ-4h-rM9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gtN-rp-BDi" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NaviEditWaypoint" automaticallyAdjustsScrollViewInsets="NO" id="gtN-rp-BDi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hwe-VZ-yOY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -190,10 +209,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40M-7d-ERD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-550"/>
+            <point key="canvasLocation" x="750" y="-578"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jqf-6k-pJJ"/>
+        <segue reference="EvA-bm-2u5"/>
     </inferredMetricsTieBreakers>
 </document>

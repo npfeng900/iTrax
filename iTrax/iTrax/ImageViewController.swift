@@ -39,7 +39,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate, UIPopoverCont
             */
             // 异步操作
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-            dispatch_async(dispatch_get_global_queue(qos, 0)) { () -> Void in
+            dispatch_async(dispatch_get_global_queue(qos, 0)) { 
                 let imageData = NSData(contentsOfURL: url)
                 dispatch_async(dispatch_get_main_queue()) {
                     if url == self.imageURL { //验证url是否是实时请求的imageURL，多线程问题

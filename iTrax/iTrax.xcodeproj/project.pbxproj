@@ -76,11 +76,11 @@
 			isa = PBXGroup;
 			children = (
 				6DA2C87A1E154828009997A8 /* AppDelegate.swift */,
-				6DA2C87C1E154828009997A8 /* GPXViewController.swift */,
-				6DC315A71E1903FC007CA238 /* ImageViewController.swift */,
-				6D99B1121E1BD7330032F1E8 /* EditWaypointViewController.swift */,
-				6D3801DF1E18B6AF00537B06 /* MKGPX.swift */,
 				6D3801DD1E18AE4400537B06 /* GPX.swift */,
+				6D3801DF1E18B6AF00537B06 /* MKGPX.swift */,
+				6DA2C87C1E154828009997A8 /* GPXViewController.swift */,
+				6D99B1121E1BD7330032F1E8 /* EditWaypointViewController.swift */,
+				6DC315A71E1903FC007CA238 /* ImageViewController.swift */,
 				6DA2C87E1E154828009997A8 /* Main.storyboard */,
 				6DA2C8811E154828009997A8 /* Assets.xcassets */,
 				6DA2C8831E154828009997A8 /* LaunchScreen.storyboard */,
