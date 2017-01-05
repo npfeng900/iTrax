@@ -11,7 +11,8 @@ import UIKit
 struct GPXURL {
     static let NotificationName = "GPXURL Radio Station"
     static let Key = "GPXURL URL Key"
-    static let DefaultURL = NSURL(string: "http://web.stanford.edu/class/cs193p/Vacation.gpx")!
+    //static let DefaultURL = NSURL(string: "http://web.stanford.edu/class/cs193p/Vacation.gpx")!
+    static let DefaultURL = NSBundle.mainBundle().URLForResource("Vacation", withExtension: "gpx")!
 }
 
 @UIApplicationMain

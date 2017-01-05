@@ -82,7 +82,7 @@ class GPXViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentat
             let coordinate = mapView.convertPoint(sender.locationInView(mapView), toCoordinateFromView: mapView)
             let waypoint = EditableWaypoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
             waypoint.name = "Dropped"
-            waypoint.links.append(GPX.Link(href: "http://date.212200.com/forum/201403/12/224525ntmiidtibsufqmkz.jpg"))
+            //waypoint.links.append(GPX.Link(href: "http://date.212200.com/forum/201403/12/224525ntmiidtibsufqmkz.jpg"))
             mapView.addAnnotation(waypoint)
         }
     }
@@ -133,13 +133,22 @@ class GPXViewController: UIViewController, MKMapViewDelegate, UIPopoverPresentat
     /** didSelectAnnotationView，加载leftCalloutAccessoryView */
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         if let waypoint = view.annotation as? GPX.Waypoint { // MKAnnotationView->GPX.Waypoint
-            if let thumbnailImageButton = view.leftCalloutAccessoryView as? UIButton {//UIView->UIButton
-                if let imageData = NSData(contentsOfURL: waypoint.thumbnailURL!) {//获取imageData
-                    if let image = UIImage(data: imageData) { //imageData->iamge
-                        thumbnailImageButton.setImage(image, forState: .Normal)
+            // 如果thumbnailURL存在就显示
+            if let url = waypoint.thumbnailURL {
+                //leftCalloutAccessoryView为空时，需要给MKAnnotationView添加leftCalloutAccessoryView
+                if view.leftCalloutAccessoryView == nil {
+                    view.leftCalloutAccessoryView = UIButton(frame: Constants.LeftCalloutFrame)
+                }
+                //给leftCalloutAccessoryView设置image
+                if let thumbnailImageButton = view.leftCalloutAccessoryView as? UIButton {//UIView->UIButton
+                    if let imageData = NSData(contentsOfURL: url) {//获取imageData
+                        if let image = UIImage(data: imageData) { //imageData->iamge
+                            thumbnailImageButton.setImage(image, forState: .Normal)
+                        }
                     }
                 }
             }
+           
         }
     }
     /** calloutAccessoryControlTapped，从CalloutAccessoryView跳转 */
