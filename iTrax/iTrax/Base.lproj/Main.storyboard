@@ -135,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="1579" y="-550"/>
         </scene>
-        <!--Image View Controller-->
+        <!--Waypoint Image View Controller-->
         <scene sceneID="sTq-Sh-zF3">
             <objects>
-                <viewController id="2Bn-Hr-6qR" customClass="ImageViewController" customModule="iTrax" sceneMemberID="viewController">
+                <viewController id="2Bn-Hr-6qR" customClass="WaypointImageViewController" customModule="iTrax" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SoH-S7-pzF"/>
                         <viewControllerLayoutGuide type="bottom" id="Pw1-nU-Pjw"/>
@@ -155,14 +155,26 @@
                                 <rect key="frame" x="282" y="281" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1m-km-MAS">
+                                <rect key="frame" x="380" y="380" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="T6E-WZ-z3e"/>
+                                    <constraint firstAttribute="width" constant="200" id="ZMK-YH-RFT"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="dmW-hG-Xhe" kind="embed" identifier="Embed Map" id="x5j-0e-QqE"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.1139041707" green="0.5696912408" blue="0.99943178889999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7HU-sZ-T8W" firstAttribute="centerY" secondItem="8wU-9Y-Ngz" secondAttribute="centerY" id="Kzj-gB-14l"/>
                             <constraint firstItem="Pw1-nU-Pjw" firstAttribute="top" secondItem="Kah-hX-ZnK" secondAttribute="bottom" id="Rny-wE-y0N"/>
+                            <constraint firstItem="Pw1-nU-Pjw" firstAttribute="top" secondItem="c1m-km-MAS" secondAttribute="bottom" constant="20" id="epa-cW-fEY"/>
                             <constraint firstItem="Kah-hX-ZnK" firstAttribute="leading" secondItem="8wU-9Y-Ngz" secondAttribute="leadingMargin" constant="-20" id="giK-na-IcK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Kah-hX-ZnK" secondAttribute="trailing" constant="-20" id="giY-rg-T9e"/>
                             <constraint firstItem="Kah-hX-ZnK" firstAttribute="top" secondItem="SoH-S7-pzF" secondAttribute="bottom" id="jbf-uY-QSO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c1m-km-MAS" secondAttribute="trailing" id="wpM-18-FzZ"/>
                             <constraint firstItem="7HU-sZ-T8W" firstAttribute="centerX" secondItem="8wU-9Y-Ngz" secondAttribute="centerX" id="zHx-Er-Dm4"/>
                         </constraints>
                     </view>
@@ -210,6 +222,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40M-7d-ERD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-578"/>
+        </scene>
+        <!--Simple Map View Controller-->
+        <scene sceneID="veX-Ss-4Bg">
+            <objects>
+                <viewController id="dmW-hG-Xhe" customClass="SimpleMapViewController" customModule="iTrax" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IEf-ua-ppe">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dz6-dh-tvQ">
+                                <rect key="frame" x="-4" y="0.0" width="208" height="200"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="topMargin" secondItem="dz6-dh-tvQ" secondAttribute="top" id="6iV-Ym-0sJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dz6-dh-tvQ" secondAttribute="trailing" constant="-20" id="T5C-Cr-bpw"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="dz6-dh-tvQ" secondAttribute="bottom" id="rs0-ng-9nt"/>
+                            <constraint firstItem="dz6-dh-tvQ" firstAttribute="leading" secondItem="IEf-ua-ppe" secondAttribute="leadingMargin" constant="-20" id="xPS-IV-aEV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="dz6-dh-tvQ" id="uh0-o7-eHi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0kq-k1-Om1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2122" y="136"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
