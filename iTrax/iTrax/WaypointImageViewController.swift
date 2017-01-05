@@ -31,7 +31,7 @@ class WaypointImageViewController: ImageViewController {
             }
         }
     }
-    // MARK: - SimpeMapViewContrller
+    // MARK: - SimpeMapViewContrller...
     var smvc: SimpleMapViewController?
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
